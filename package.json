@@ -1,0 +1,19 @@
+{
+	"name": "uninett-bs-theme",
+	"version": "1.0.0",
+	"description": "UNINETT bootstrap theme",
+	"repository": "https://github.com/uninett/uninett-bs-theme.git",
+	"author": "jorn.dejong@uninett.no",
+	"license": "Proprietary",
+	"private": true,
+	"dependencies": {
+		"bootstrap": "^4.0.0",
+		"open-iconic": "^1.1.1"
+	},
+	"devDependencies": {
+		"node-sass": "^4.7.2"
+	},
+	"scripts": {
+		"build": "mkdir -p dist/css && node-sass --output-style expanded <scss/uninett.scss >dist/css/uninett.css && cp -a img dist/ && cp -a node_modules/open-iconic/font/fonts dist/ && cp -a uninett-webfont/fonts dist/"
+	}
+}

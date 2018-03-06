@@ -1,0 +1,3 @@
+[submodule "uninett-webfont"]
+	path = uninett-webfont
+	url = https://scm.uninett.no/grafisk/uninett-webfont.git
