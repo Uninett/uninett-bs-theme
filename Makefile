@@ -1,7 +1,6 @@
 build: submodule
 	yarn
 	yarn build
-	yarn dist
 
 submodule:
 	git submodule init

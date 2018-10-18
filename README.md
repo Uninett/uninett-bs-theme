@@ -14,4 +14,3 @@ Manual installation
 
 	yarn
 	yarn build
-	yarn dist
