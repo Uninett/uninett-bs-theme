@@ -14,6 +14,10 @@ excluded from the dist directory, you'll have to add them yourself.
 	git submodule update
 	cp -a uninett-webfont/fonts dist/
 
+Or simply
+
+	make fonts
+
 
 ## Building
 

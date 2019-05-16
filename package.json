@@ -17,6 +17,6 @@
 	},
 	"scripts": {
 		"build": "mkdir -p build/css && node-sass --output-style expanded <scss/uninett.scss >build/css/uninett.css",
-		"dist": "mkdir -p dist/css && cp build/css/uninett.css dist/css/uninett.css && mkdir -p dist/js && cp -a img dist/ && cp -a node_modules/open-iconic/font/fonts dist/ && cp -a uninett-webfont/fonts dist/ && cp node_modules/jquery/dist/jquery.slim.js node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/popper.js/dist/popper.min.js dist/js/"
+		"dist": "mkdir -p dist/css && cp build/css/uninett.css dist/css/uninett.css && mkdir -p dist/js && cp -a img dist/ && cp -a node_modules/open-iconic/font/fonts dist/ && cp node_modules/jquery/dist/jquery.slim.js node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/popper.js/dist/popper.min.js dist/js/"
 	}
 }
