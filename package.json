@@ -1,22 +1,20 @@
 {
 	"name": "uninett-bs-theme",
-	"version": "1.0.0",
-	"description": "UNINETT bootstrap theme",
+	"version": "2.0.0",
+	"description": "Uninett bootstrap theme",
 	"repository": "https://github.com/uninett/uninett-bs-theme.git",
 	"author": "jorn.dejong@uninett.no",
 	"license": "Proprietary",
 	"private": true,
 	"dependencies": {
-		"bootstrap": "^4.1.3",
-		"jquery": "^3.5.0",
-		"open-iconic": "^1.1.1",
-		"popper.js": "^1.14.4"
+		"bootstrap": "5.0.0-alpha1",
+		"popper.js": "^1.16.0"
 	},
 	"devDependencies": {
-		"node-sass": "^4.7.2"
+		"node-sass": "^4.14"
 	},
 	"scripts": {
 		"build": "mkdir -p build/css && node-sass --output-style expanded <scss/uninett.scss >build/css/uninett.css",
-		"dist": "mkdir -p dist/css && cp build/css/uninett.css dist/css/uninett.css && mkdir -p dist/js && cp -a img dist/ && cp -a node_modules/open-iconic/font/fonts dist/ && cp node_modules/jquery/dist/jquery.slim.js node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/popper.js/dist/popper.min.js dist/js/"
+		"dist": "mkdir -p dist/css && cp build/css/uninett.css dist/css/uninett.css && mkdir -p dist/js && cp -a img dist/ && cp node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/popper.js/dist/popper.min.js dist/js/"
 	}
 }

@@ -1,41 +1,40 @@
 /*
-This CSS overrides Bootstrap v4.0.0 to make the design more suitable
-for use in UNINETT.  When I had to make a choice between overriding
-a Bootstrap default or deviating from the UNINETT design, I've opted
-to deviate from the UNINETT design.
+This CSS overrides Bootstrap v5.0.0 to make the design more suitable
+for use in Uninett.  When I had to make a choice between overriding
+a Bootstrap default or deviating from the Uninett design, I've opted
+to deviate from the Uninett design.
 
 For some things I've made classes that complement the existing Bootstrap classes,
 such as the navbar and button colors.  For other things I've just gone completely
-with the Bootstrap default, such as using multiples of 15px for margins and paddings.
+with the Bootstrap default, such as using multiples of 1rem for margins and paddings.
 */
 
-$body-bg: #e5e0dc;
+$body-bg: #fff;
 
 $theme-colors: (
-	/* Override the pastel blue from bootstrap with dark blue from the UNINETT theme */
-	"primary": #337db1,
+	/* Override the pastel blue from bootstrap with dark blue from the Uninett theme */
+	"primary": #1b4176,
 );
 
-$spacer: 15px;
+$spacer:  1rem;
 
 :root {
-	/* The UNINETT navbar is as white as snow, so we override the color for bg-light. */
+	/* The Uninett navbar is as white as snow, so we override the color for bg-light. */
 	--light: #fff;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
-@import "node_modules/open-iconic/font/css/open-iconic-bootstrap.scss";
 @import "uninett-webfont/font-sass";
 
 /*
-UNINETT uses a brown/grey-ish color as the default background color.
+Uninett uses a brown/grey-ish color as the default background color.
 The page is set to be no less than 260px to make both the logo and
 the hamburger menu fit the navbar.
 */
 body {
 	/* background: #e5e0dc; Overridden with SASS */
 	min-width: 260px;
-	font-family: "colfaxRegular",var(--font-family-sans-serif);
+	font-family: "Colfax","colfaxRegular",var(--bs-font-sans-serif);
 }
 
 /*
@@ -49,156 +48,141 @@ footer {
 
 	color: #eb203a;
 	font-size: 20px;
-	font-family: "colfaxRegular",var(--font-family-sans-serif);
+	font-family: "Colfax","colfaxRegular",var(--bs-font-sans-serif);
 	font-weight: 300;
 }
 
-/*
-If the UNINETT navbar is at the top, make sure it is at least 75px high.
-This causes a funny animation when expanding the hamburger menu, but I've
-decided to keep it that way because it looks kinda cute.
-*/
-nav.navbar-uninett.sticky-top, nav.navbar-uninett.fixed-top {
-	min-height: 75px;
+nav.navbar-uninett {
+	box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px;
+}
+nav.navbar-eduroam {
+	background: #f4fafe;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 1px;
 }
 /*
-Display the UNINETT logo in the navbar brand
+Remove padding on the navbar so that the hamburger button looks better
+*/
+nav.navbar-uninett, nav.navbar-uninett,
+nav.navbar-eduroam, nav.navbar-eduroam {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+/*
+Since the navbar is positioned fixed,
+claim some space at the top of the document
+*/
+body {
+	padding-top: 5rem;
+}
+
+/*
+Display the Uninett logo in the navbar brand
 Text is pushed to the right side of the logo with padding.
 */
-.navbar-uninett .navbar-brand,
+.navbar-uninett .navbar-brand, .navbar-eduroam .navbar-brand,
 nav.bg-uninett .navbar-brand {
 	display: inline-block;
-	padding-left: 157px; /* logo width + 15px */
-	height: 39px; /* logo height */
-	background: url('../img/UNINETT_logo.svg') no-repeat 0 0;
+	padding-left: 5.76rem; /* ceil(logo width * .04) */
+	width: 5.75rem; /* floor(logo width * .04) */
+	height: 1.56rem; /* floor(logo height * .04) */
+	background-image: url('../img/Uninett-logo.svg');
+	background-repeat: no-repeat;
+	background-position: 0 0;
 	background-size: contain;
 	color: var(--gray);
+	overflow: hidden;
+}
+.navbar-brand.navbar-brand-eduroam {
+	background-image: url('../img/eduroam-logo.svg');
+	padding-left: 6.26rem; /* ceil(logo width * .01) */
+	width: 6.2532rem; /* floor(logo width * .01) */
+	height: 2.7128rem; /* floor(logo height * .01) */
+}
+
+.navbar-uninett .navbar-toggler, .navbar-eduroam .navbar-toggler {
+	border: none;
+	border-radius: 0;
+	color: black;
+	padding: .5rem;
+}
+.navbar-uninett .navbar-toggler:hover, .navbar-eduroam .navbar-toggler:hover {
+	background: var(--bs-primary);
+	color: white;
+}
+.navbar-uninett .navbar-toggler-icon, .navbar-eduroam .navbar-toggler-icon {
+	background-image: none;
+}
+.navbar-uninett .navbar-toggler-icon:before, .navbar-eduroam .navbar-toggler-icon:before {
+	content: '꠵';
+	font-size: 2rem;
+	top: -.15rem;
 	position: relative;
-	top: -3px;
+}
+.navbar-eduroam .navbar-nav {
+	max-width: 21rem;
+	margin: auto;
+}
+.navbar-light .navbar-nav .nav-link,
+.story-block-btn {
+	font-family: "Colfax","colfaxBold","colfaxRegular",var(--bs-font-sans-serif);
+	font-weight: 500;
+	color: var(--bs-primary);
 }
 
-/*
-A content block, white background which is visible against the brown/gray
-background color for body
-*/
-.unipanel {
-	margin-top: 30px;
-	background: white;
-}
-/*
-When containing text, these blocks have a margin (for which we use Bootstrap's
-default 30px margin), but they have a little more margin at the top.
-At the top of this document, I've already specified that we use units of 15px,
-so we use 45px padding at the top.
-*/
-.unicontent {
-	padding: 30px;
-	padding-top: 45px;
-}
-
-/*
-=== CUSTOM STYLES FOR .unipanel
-*/
-/* A suble gray triangle at the top right */
-.unipanel-bg-diagonal {
-	background: white url('../img/triangle.svg') 100% 0 no-repeat;
-}
-
-/* Medium dark grey background, pairs better with white text */
-.unipanel-bg-gray {
-	background: #999795;
-}
-.unipanel-bg-gray,
-.unipanel-bg-gray a {
-	color: white;
-}
-
-/* Small icon bar like the social buttons on uninett.no */
-.unipanel-icons,
-.unipanel-icons a {
-	text-decoration: none;
-	font-size: 24px;
-	text-align: center;
-}
-.unipanel-icons .unicontent {
-	padding: 15px;
-}
-
-/* The well known dark blue background with a nodes-network like pattern background */
-.unipanel-bg-struktur {
-	background: #00404c url('../img/uninett_struktur1.jpg') no-repeat 70% 50%;
-	background-size: cover;
-}
-.unipanel-bg-struktur,
-.unipanel-bg-struktur a {
-	color: white;
-}
-
-/* A map of Norway with all our current netpoints marked and lines between them */
-.unipanel-bg-netmap {
-	background: url('../img/netmap2_1_3.png') no-repeat 70% 50%;
-	background-size: cover;
-	color: white;
-	min-height: 400px;
-	padding: 30px;
-	padding-bottom: 60px;
-}
-/* The content inside the netmap is transparent and leaves some room at the right,
- * so that the map of Norway is better visible.
- */
-.unipanel-bg-netmap .unicontent {
-	background: rgba(80,80,80,.5);
-	min-height: 310px;
-	width: 75%;
-}
-/* When there's not much horizontal space, don't leave soom at the right */
-@media (max-width: 767px) {
-	/* http://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints */
-	.unipanel-bg-netmap .unicontent {
-		width: 100%;
-	}
-}
-
-h1, .h1 {
-	font-family: "colfaxRegular",var(--font-family-sans-serif);
-	font-size: 32px;
-	font-weight: 600;
-
-}
-h2, .h2 {
-	font-family: "colfaxBold",var(--font-family-sans-serif);
-	text-transform: uppercase;
-	font-size: 14px;
-}
-p.unicontent-fronted {
-	font-size: 24px;
-}
-
-.btn {
-	font-weight: 300;
-	font-family: "colfaxBold",var(--font-family-sans-serif);
-}
-
-/* Date format under a post or event, display smaller and as its own block */
-.date {
+.navbar-light:not(.navbar-expand-lg) .navbar-nav .nav-link:not(.dropdown-toggle):after {
 	display: block;
-	font-size: 12px;
-	font-family: "colfaxBold",var(--font-family-sans-serif);
+	float: right;
+}
+.navbar-light:not(.navbar-expand-lg) .navbar-nav .nav-link:not(.dropdown-toggle):after,
+.btn-primary:after,
+.story-block-btn:after {
+	content: '⌃';
+	transform: rotate(90deg);
 }
 
-/* Use blue arrows as list items */
-ul {
-	list-style-image: url('../img/list-item.svg');
-}
-/* Override the pastel blue from bootstrap with dark blue from the UNINETT theme */
-a {
-	/* Same color as on uninett.no, but we're not overriding the hover.
-	So the color changes subtilly when you hover a link. */
-	color: #0054a0;
+.btn-jumbo {
+	padding: 0.75rem 1.5rem;
+	box-shadow: rgba(0,0,0,.25) 0 .2rem .2rem;
+	font-size: 1.33rem;
 }
 
-b,
-strong {
-	font-weight: 300;
-	font-family: "colfaxBold",var(--font-family-sans-serif);
+.btn-primary {
+	/* background: #1b4176; */ /* this is already --bs-primary */
+	text-transform: uppercase;
+	font-family: "Colfax","colfaxBold","colfaxRegular",var(--bs-font-sans-serif);
+	font-weight: 500;
+	padding-right: 2rem;
+}
+.btn-primary:after {
+	font-family: "Colfax","colfaxBold","colfaxRegular",var(--bs-font-sans-serif);
+	display: inline-block;
+	position: relative;
+	left: 1rem;
+}
+.narrow-section {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	max-width: 23rem;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.story-block-btn {
+	border: 2px solid var(--bs-primary);
+	border-radius: 0;
+	text-align: left;
+	width: 100%;
+}
+.story-block-btn small {
+	display: block;
+	color: #212529; /* same as body */
+	font-family: "Colfax","colfaxRegular",var(--bs-font-sans-serif);
+}
+.story-block-btn:after {
+	font-family: "Colfax", "colfaxBold", "colfaxRegular", var(--bs-font-sans-serif);
+	display: block;
+	position: relative;
+	margin-top: -1rem;
+	top: -1rem;
+	float: right;
 }

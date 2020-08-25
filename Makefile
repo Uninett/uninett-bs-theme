@@ -1,16 +1,14 @@
-build: submodule
+dist: submodule scss/uninett.scss
 	yarn
 	yarn build
 	yarn dist
+	cp -va uninett-webfont/fonts dist/
 
 submodule:
 	git submodule init
 	git submodule update
 
-fonts: submodule
-	cp -va uninett-webfont/fonts dist/
-
 clean:
-	rm -rf dist node_modules yarn-error.log
+	rm -rf build dist node_modules yarn-error.log
 
-.PHONY: build fonts submodule
+.PHONY: submodule clean
