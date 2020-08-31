@@ -8994,6 +8994,7 @@ nav.bg-uninett .navbar-brand {
 
 .navbar-light:not(.navbar-expand-lg) .navbar-nav .nav-link:not(.dropdown-toggle):after,
 .btn-primary:after,
+.btn-link:after,
 .story-block-btn:after {
   content: '⌃';
   transform: rotate(90deg);
@@ -9006,16 +9007,35 @@ nav.bg-uninett .navbar-brand {
 }
 
 .btn-primary {
-  /* background: #1b4176; */
-  /* this is already --bs-primary */
   text-transform: uppercase;
   font-family: "Colfax", "colfaxBold", "colfaxRegular", var(--bs-font-sans-serif);
+}
+
+.btn-primary small, .btn-primary .small {
+  text-transform: initial;
+  font-family: "Colfax", "colfaxRegular", var(--bs-font-sans-serif);
+  /* same as body */
+  font-weight: initial;
+}
+
+.btn-link {
+  color: var(--bs-primary);
+}
+
+.btn-primary,
+.btn-link {
   font-weight: 500;
   padding-right: 2rem;
 }
 
-.btn-primary:after {
+.btn-link.btn-block {
+  text-align: left;
+}
+
+.btn-primary:after,
+.btn-link:after {
   font-family: "Colfax", "colfaxBold", "colfaxRegular", var(--bs-font-sans-serif);
+  font-weight: 500;
   display: inline-block;
   position: relative;
   left: 1rem;
@@ -9038,16 +9058,31 @@ nav.bg-uninett .navbar-brand {
 
 .story-block-btn small, .story-block-btn .small {
   display: block;
-  color: #212529;
-  /* same as body */
+  color: var(--bs-gray-dark);
+  /* should be #212529, same as body */
   font-family: "Colfax", "colfaxRegular", var(--bs-font-sans-serif);
 }
 
 .story-block-btn:after {
   font-family: "Colfax", "colfaxBold", "colfaxRegular", var(--bs-font-sans-serif);
+  font-weight: 500;
   display: block;
   position: relative;
   margin-top: -1rem;
   top: -1rem;
   float: right;
+}
+
+h4, .h4, .h4, h5, .h5, .h5 {
+  font-family: Colfax, colfaxBold, colfaxRegular, var(--bs-font-sans-serif);
+  font-weight: 500;
+  color: var(--bs-primary);
+}
+
+h4 small, .h4 small, h4 .small, .h4 .small, .h4 small, .h4 .small,
+h5 small,
+.h5 small,
+h5 .small,
+.h5 .small, .h5 small, .h5 .small {
+  color: var(--bs-gray);
 }
