@@ -204,13 +204,8 @@ nav.bg-uninett .navbar-brand {
 	float: right;
 }
 
-h4, .h4,
-h5, .h5 {
+h4, .h4 {
 	font-family: Colfax,colfaxBold,colfaxRegular,var(--bs-font-sans-serif);
 	font-weight: 500;
 	color: var(--bs-primary);
-}
-h4 small, .h4 small,
-h5 small, .h5 small {
-	color: var(--bs-gray);
 }
