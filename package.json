@@ -11,7 +11,7 @@
 		"popper.js": "^1.16.0"
 	},
 	"devDependencies": {
-		"node-sass": "^4.14"
+		"node-sass": "^7.0"
 	},
 	"scripts": {
 		"build": "mkdir -p build/css && node-sass --output-style expanded <scss/uninett.scss >build/css/uninett.css",
